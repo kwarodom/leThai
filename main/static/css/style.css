@@ -65,7 +65,11 @@ form select, form textarea{ box-shadow: none !important; }
 table { background: #fff; }
 
 .padd{
-	padding: 50px 0;
+	padding: 100px 0;
+}
+
+.padd2{
+	padding: 10px 0;
 }
 
 .social a i{
@@ -1686,7 +1690,7 @@ div.ppt { display:none !important; }
  * Gallery page CSS 
  */
 
-.inner-page .gallery { margin-top: 40px; border-top: 0; }
+.inner-page .gallery { margin-top: 0px; border-top: 0; }
 
 /*
  * Nutrition page CSS 

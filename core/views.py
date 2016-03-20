@@ -5,5 +5,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return render(request, 'index.html')  # {} call template context
-
+    user = request.user
+    context = {'user': user}
+    template = 'index.html'
+    return render(request, template, context)
