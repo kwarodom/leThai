@@ -13,7 +13,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MAIN_DIR = os.path.dirname(os.path.dirname(__file__))
+
 ON_HEROKU = os.environ.get('ON_HEROKU')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -79,18 +82,19 @@ if ON_HEROKU == False :
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': os.path.join(MAIN_DIR, 'db.sqlite3'),
         }
     }
 else:
-    import dj_database_url
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': os.path.join(MAIN_DIR, 'db.sqlite3'),
         }
     }
-    DATABASES['default'] =  dj_database_url.config()
+    import dj_database_url
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -137,6 +141,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # To import static files for css and javascript
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'main', 'static'),)
+STATIC_ROOT = os.path.join(MAIN_DIR, 'staticfiles')
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(MAIN_DIR, 'main', 'static'),
+)
