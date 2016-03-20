@@ -11,8 +11,13 @@ import os
 from django.core.wsgi import get_wsgi_application
 from django.core.wsgi import get_wsgi_application
 from dj_static import Cling
+from whitenoise.django import DjangoWhiteNoise
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "main.settings")
 
 application = Cling(get_wsgi_application())
-
+'''
+By default, Django does not support serving static files in production. We recommend using the WhiteNoise project
+for best-practice serving of static assets in production.
+'''
+application = DjangoWhiteNoise(application)
