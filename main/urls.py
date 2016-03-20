@@ -20,6 +20,7 @@ from django.conf.urls.static import static
 from core import views as core_views
 from contact import views as contact_views
 from profiles import views as profile_views
+from checkout import views as checkout_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,4 +28,5 @@ urlpatterns = [
     url(r'^contact/', contact_views.about, name='contact'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/', profile_views.profile, name='profile'),
+    url(r'^checkout/', checkout_views.checkout, name='contact'),
 ]

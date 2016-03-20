@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'profiles',
+    'stripe',
 
 ]
 
@@ -79,6 +80,7 @@ TEMPLATES = [
                 "django.core.context_processors.media",
                 "django.core.context_processors.static",
                 "django.core.context_processors.tz",
+                "django.core.context_processors.csrf",
             ],
         },
     },
@@ -218,3 +220,13 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = False
 ACCOUNT_PASSWORD_MIN_LENGTH = 6
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+
+# stripe stiff
+
+# test keys
+STRIPE_PUBLISHABLE_KEY = "pk_test_DCgjm5Wotgrm4xARtPiV2CNH"
+STRIPE_SECRET_KEY = "sk_test_trkeLOmEAJpTFKN6PqP9PBQg"
+
+# live keys
+#STRIPE_PUBLISHABLE_KEY = "pk_live_JXdyRhSm0fx31UzzsKy0x4h1"
+#STRIPE_SECRET_KEY = "sk_live_msQ4qOh1TBuGZElZ7eGvwIYU"
