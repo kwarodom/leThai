@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 
 import os
 from django.core.wsgi import get_wsgi_application
-from django.core.wsgi import get_wsgi_application
 from dj_static import Cling
 from whitenoise.django import DjangoWhiteNoise
 
