@@ -151,3 +151,16 @@ STATICFILES_DIRS = (
 )
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+# Email
+'''
+For one who use 2-factor authentication, need to get app password from
+https://security.google.com/settings/security/apppasswords?pli=1
+also if there's an exception error go to
+https://accounts.google.com/DisplayUnlockCaptcha
+'''
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kwarodom@vt.edu'
+EMAIL_HOST_PASSWORD = 'fogheflpgpnzjofv'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True

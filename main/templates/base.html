@@ -2,15 +2,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Inventory Project</title>
-    <meta name="description" content="">
-    <link rel="stylesheet" href="{% static 'main.css' %}">
-</head>
+		<meta charset="utf-8">
+		<!-- Title here -->
+		<title>Le Thai Cuisine</title>
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="Your description">
+		<meta name="keywords" content="Your,Keywords">
+		<meta name="author" content="ResponsiveWebInc">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<!-- Portfolio CSS -->
+		<link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+		<!-- Font awesome CSS -->
+		<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+		<!-- Custom Less -->
+		<link href="{% static 'css/less-style.css' %}" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="{% static 'css/style.css' %}" rel="stylesheet">
+		<!--[if IE]><link rel="stylesheet" href="css/ie-style.css"><![endif]-->
+
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+	</head>
 <body>
     <!-- this two blocks allow child page to have their own content here -->
     {% block content %}
     {% endblock content %}
-    <script src="{% static 'main.js' %}"></script>
+    <!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="{% static 'js/jquery.js' %}"></script>
+		<!-- Bootstrap JS -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<!-- Pretty Photo JS -->
+		<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="{% static 'js/respond.min.js' %}"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="{% static 'js/html5shiv.js' %}"></script>
+		<!-- Custom JS -->
+		<script src="{% static 'js/custom.js' %}"></script>
+		<!-- JS code for this page -->
+		<script>
+		/* Gallery */
+
+		jQuery(".gallery-img-link").prettyPhoto({
+		   overlay_gallery: false, social_tools: false
+		});
+
+		</script>
 </body>
 </html>
