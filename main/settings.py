@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'contact',
+    'crispy_forms',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -164,3 +166,5 @@ EMAIL_HOST_USER = 'kwarodom@vt.edu'
 EMAIL_HOST_PASSWORD = 'fogheflpgpnzjofv'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
