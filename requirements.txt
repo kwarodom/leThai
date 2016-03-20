@@ -7,4 +7,5 @@ gunicorn==19.4.5
 postgres==2.2.1
 psycopg2==2.6.1
 static3==0.6.1
+whitenoise==2.0.6
 wsgiref==0.1.2
