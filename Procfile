@@ -1,1 +1,1 @@
-web: gunicorn leThai.wsgi --log-file -
+web: gunicorn main.wsgi --log-file -
