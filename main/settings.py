@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'core',
     'contact',
     'crispy_forms',
+     # The Django sites framework is required
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -68,13 +74,26 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "django.core.context_processors.i18n",
+                "django.core.context_processors.media",
+                "django.core.context_processors.static",
+                "django.core.context_processors.tz",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'main.wsgi.application'
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
 
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+
+WSGI_APPLICATION = 'main.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -168,3 +187,33 @@ EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# Django allauth setting: http://django-allauth.readthedocs.org/en/latest/configuration.html
+LOGIN_URL = '/accounts/login/'  # user need to go to this url to login
+LOGIN_REDIRECT_URL = '/'  #
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"  # username and email
+ACCOUNT_CONFIRM_EMAIL_ON_GET = False  # allauth verify if user email has been confirmed
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = LOGIN_URL  # anonymous user will be redirect to this url
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = None  # send user to the home page
+
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3  # when the link that user signup expire
+ACCOUNT_EMAIL_REQUIRED = False  # whether user need to provide email when they signup
+ACCOUNT_EMAIL_VERIFICATION = None  #
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "My subject: "  # subject of sent email when user signup
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "http"  # when this site is secure use https
+
+ACCOUNT_LOGOUT_ON_GET = False  # False to ask user whether they really want to logout
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"  # url that user will be taken to after logout
+ACCOUNT_SIGNUP_FORM_CLASS = None  # to use allauth provided form
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = True  # user has to enter password twice to avoid typo
+ACCOUNT_UNIQUE_EMAIL = True  # unique model to signup
+ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"  #
+ACCOUNT_USER_MODEL_EMAIL_FIELD = "email"
+
+ACCOUNT_USERNAME_MIN_LENGTH = 5  # min number of character of username
+ACCOUNT_USERNAME_BLACKLIST = []  # to blacklist some user
+ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_PASSWORD_INPUT_RENDER_VALUE = False
+ACCOUNT_PASSWORD_MIN_LENGTH = 6
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True

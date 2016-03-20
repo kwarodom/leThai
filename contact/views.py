@@ -17,7 +17,7 @@ def about(request):
         subject = 'Message from LeThaiCuisine.com'
         message = '{} {}'.format(comment, name)
         emailFrom = form.cleaned_data['email']
-        emailTo = [settings.EMAIL_HOST_USER, 'letorruella@gmail.com']
+        emailTo = [settings.EMAIL_HOST_USER, form.cleaned_data['email']]
         send_mail(subject, message, emailFrom, emailTo, fail_silently=True)
         title = "Thanks"
         confirm_message = "Thanks for the message"

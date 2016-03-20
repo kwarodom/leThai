@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', core_views.index, name='index'),
     url(r'^contact/', contact_views.about, name='contact'),
+    url(r'^accounts/', include('allauth.urls')),
 ]
