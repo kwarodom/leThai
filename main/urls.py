@@ -21,7 +21,15 @@ from core import views as core_views
 from contact import views as contact_views
 from profiles import views as profile_views
 from checkout import views as checkout_views
+from rest_framework import routers
+from quickstart import views as quickstart_views
 
+router = routers.DefaultRouter()
+router.register(r'users', quickstart_views.UserViewSet)
+router.register(r'groups', quickstart_views.GroupViewSet)
+
+# Wire up our API using automatic URL routing.
+# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', core_views.index, name='index'),
@@ -29,4 +37,6 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^profile/', profile_views.profile, name='profile'),
     url(r'^checkout/', checkout_views.checkout, name='contact'),
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
