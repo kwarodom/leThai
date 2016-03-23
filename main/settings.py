@@ -117,8 +117,12 @@ if ON_HEROKU == False :
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(MAIN_DIR, 'db.sqlite3'),
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'daoq758tlishof',
+            'USER': 'pwojhgrpgmeevt',
+            'PASSWORD': 'ExfsOG97e68BrJTdHU3LeI814r',
+            'HOST': 'ec2-107-22-246-250.compute-1.amazonaws.com',
+            'PORT': '5432',
         }
     }
     import dj_database_url
